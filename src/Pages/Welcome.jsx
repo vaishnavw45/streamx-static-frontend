@@ -1,5 +1,5 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 
 import Footer from "../componets/Footer/Footer";
 
@@ -9,18 +9,21 @@ import WelcomePageImage3 from "../images/WelcomePageImage3.png";
 import WelcomePageImage4 from "../images/WelcomePageImage4.png";
 import WelcomePageBanner from "../images/WelcomePageBanner.jpg";
 
-import { Fade } from "react-reveal";
 import { Link } from "react-router-dom";
 
 function Welcome() {
   useEffect(() => {
-    //alert("This is NOT REAL NETFLIX so don't Enter your REAL CREDENTIALS")
     const image1 = WelcomePageImage1;
   }, []);
 
+  const fadeInVariant = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1.2 } },
+  };
+
   return (
     <div>
-      {/*Hero Section*/}
+      {/* Hero Section */}
       <div
         style={{
           background: `linear-gradient(0deg, hsl(0deg 0% 0% / 73%) 0%, hsl(0deg 0% 0% / 73%) 35%),url(${WelcomePageBanner})`,
@@ -29,12 +32,16 @@ function Welcome() {
       >
         <div className="grid content-center justify-center h-full justify-items-center">
           <div className="w-10/12 text-center sm:w-11/12 md:w-40rem">
-            <Fade duration={2000}>
+            <motion.div
+              variants={fadeInVariant}
+              initial="hidden"
+              animate="visible"
+            >
               <h1 className="mb-3 text-3xl font-semibold text-center text-white sm:text-4xl md:text-6xl">
                 Unlimited movies, TV shows and more.
               </h1>
               <h1 className="mb-4 text-xl text-center text-stone-400 font-light sm:text-2xl">
-                Watch anywahere.Cancel anytime
+                Watch anywhere. Cancel anytime.
               </h1>
               <h1 className="mb-2 text-center text-stone-400 font-light sm:text-xl sm:mb-8">
                 Ready to watch? Enter your email to create or restart your
@@ -51,20 +58,19 @@ function Welcome() {
                   </button>
                 </Link>
               </div>
-            </Fade>
+            </motion.div>
           </div>
         </div>
-        <div
-          style={{
-            backgroundImage:
-              "linear-gradient(hsl(0deg 0% 0% / 0%), hsl(0deg 0% 0% / 38%), hsl(0deg 0% 7%))",
-          }}
-        ></div>
       </div>
 
       {/* Section 2 */}
       <section className="bg-black border-y-8 border-y-zinc-800">
-        <Fade>
+        <motion.div
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <div className="flex justify-center md:py-8">
             <div className="lg:flex lg:items-center lg:w-9/12">
               <div>
@@ -77,20 +83,25 @@ function Welcome() {
                 </h1>
               </div>
               <div className="flex justify-center">
-                <img className="" src={WelcomePageImage1} />
+                <img src={WelcomePageImage1} alt="TV" />
               </div>
             </div>
           </div>
-        </Fade>
+        </motion.div>
       </section>
 
       {/* Section 3 */}
       <section className="bg-black">
-        <Fade>
+        <motion.div
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <div className="flex justify-center">
             <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:w-9/12">
               <div className="flex justify-center">
-                <img className="" src={WelcomePageImage2} />
+                <img src={WelcomePageImage2} alt="Download" />
               </div>
               <div>
                 <h1 className="mx-4 mt-4 mb-6 text-4xl font-semibold text-center text-white lg:mt-0 lg:text-left lg:ml-8 lg:text-5xl xl:text-6xl">
@@ -103,12 +114,17 @@ function Welcome() {
               </div>
             </div>
           </div>
-        </Fade>
+        </motion.div>
       </section>
 
       {/* Section 4 */}
       <section className="bg-black border-y-8 border-y-zinc-800">
-        <Fade>
+        <motion.div
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <div className="flex justify-center md:py-8">
             <div className="lg:flex lg:items-center lg:w-9/12">
               <div>
@@ -121,20 +137,25 @@ function Welcome() {
                 </h1>
               </div>
               <div className="flex justify-center">
-                <img className="" src={WelcomePageImage3} />
+                <img src={WelcomePageImage3} alt="Watch everywhere" />
               </div>
             </div>
           </div>
-        </Fade>
+        </motion.div>
       </section>
 
       {/* Section 5 */}
       <section className="bg-black">
-        <Fade>
+        <motion.div
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <div className="flex justify-center">
             <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:w-9/12">
               <div className="flex justify-center">
-                <img className="" src={WelcomePageImage4} />
+                <img src={WelcomePageImage4} alt="Kids profile" />
               </div>
               <div>
                 <h1 className="mt-4 mb-6 text-4xl font-semibold text-center text-white lg:mt-0 lg:text-left lg:ml-8 lg:text-5xl xl:text-6xl">
@@ -147,14 +168,11 @@ function Welcome() {
               </div>
             </div>
           </div>
-        </Fade>
+        </motion.div>
       </section>
 
-      {/* Section 6 */}
-      <section></section>
-
       {/* Footer */}
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }
